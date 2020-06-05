@@ -1,10 +1,10 @@
 /**************************************************************************
- Title: Ameba RTL8722DM Coffin Dance
+ Title: Ameba RTL8722DM AmeBOT
  
  Items:
   * Ameba RTL8722DM               x1
   * SSD1306 OLED display          x1
-  * Buzzer                        x1
+  * Ultrasonic sensor             x2
 
  This example uses a 128x64 pixel display（Monochrome OLEDs based on SSD1306 drivers） 
  using SPI to communicate, 4 pins are required to interface.
@@ -13,7 +13,7 @@
  using Arduino IDE's library manager)
 
  Created by: Simon Xi
- Date:       03/06/2020
+ Date:       05/06/2020
 
  **************************************************************************/
 
@@ -42,10 +42,10 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT,
 #define LOGO_HEIGHT   64
 #define LOGO_WIDTH    64
 
-//char title[]    = "   AmeBOT  ";
-char eye[]      = "  (0)  (0) ";
-char eyeblink[] = "  ---  --- ";
-char highfive[] = "   ^    ^  ";
+char title[]    = "        AmeBOT     ";
+char eye[]      = " (0)   (0) ";
+char eyeblink[] = " ---   --- ";
+char highfive[] = "  ^     ^  ";
 
 static const unsigned char PROGMEM logo_bmp[] =
 {
@@ -163,14 +163,14 @@ void loop() {
     Serial.println(" cm");
 
     interface(distance);
-    delay(1000);
+    delay(500);
 }
 
 
 void interface(float dist) {
 
 
-  if(dist > 5.0) {
+  if(dist > 10.0) {
     display.clearDisplay();
     display.setTextSize(2);             // Normal 1:1 pixel scale
     display.setTextColor(SSD1306_WHITE);        
@@ -195,9 +195,11 @@ void interface(float dist) {
     display.println(eyeblink); 
     timerflag = false;
   }
-  
-//  display.println();
-//  display.println(title);
+ 
+  display.setTextSize(1);             // Normal 1:1 pixel scale
+  display.setTextColor(SSD1306_WHITE);    
+  display.println();
+  display.println(title);
    
   display.display();
 }
