@@ -10,3 +10,8 @@ Ameba note only controls the motor but also hosts a HTTP server providing a simp
 
 # Take Note:
 Besides the Arduino Sketch, please also download the AmebaMotors library found in this directory to your Arduino IDE
+
+This project is based on 2 examples available on Ameba Official Website, if you need more details, you may refer to the links down below,
+https://www.amebaiot.com/cn/ameba-arduino-amebamotors-basic/
+
+https://www.amebaiot.com/cn/ameba-arduino-ameba-web-server/
